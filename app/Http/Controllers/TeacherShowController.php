@@ -20,7 +20,7 @@ class TeacherShowController extends Controller
     public function index(): Application|Factory|View
     {
         return view('admin.teacher.show', [
-            'users' => User::paginate(5)
+            'users' => User::paginate(3)
         ]);
     }
 
