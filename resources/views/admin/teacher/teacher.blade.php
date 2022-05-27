@@ -39,7 +39,7 @@
 @endsection
 
 @section('javascript')
-    const deleteUrl = "{{ url('admin/teacher/show') }}/";
+    const deleteUrl = "{{ url('admin/teacher') }}/";
 @endsection
 @section('js-files')
     <script src="{{ asset('js/delete.js') }}"></script>

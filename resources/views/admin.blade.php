@@ -10,67 +10,22 @@
                 -->            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Strona główna</a>
+                            <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Grupy
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                                <li><a class="dropdown-item" href="#">Usuń</a></li>
-                                <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Wyświetl</a></li>
-                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('AdminGroup') }}">Grupy</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Wykładowcy
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/admin/teacher/add">Dodaj</a></li>
-                                <li><a class="dropdown-item" href="#">Usuń</a></li>
-                                <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/admin/teacher/show">Wyświetl</a></li>
-                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('AdminTeacher') }}">Wykładowcy</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Oceny
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                                <li><a class="dropdown-item" href="#">Usuń</a></li>
-                                <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Wyświetl</a></li>
-                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Oceny</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Studenci
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                                <li><a class="dropdown-item" href="#">Usuń</a></li>
-                                <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Wyświetl</a></li>
-                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Studenci</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Przedmioty
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Dodaj</a></li>
-                                <li><a class="dropdown-item" href="#">Usuń</a></li>
-                                <li><a class="dropdown-item" href="#">Edytuj</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Wyświetl</a></li>
-                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Przedmioty</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Dodaj przedmiot do grupy</a>
@@ -93,7 +48,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">@yield('Tytulowa')</div>
                     <div class="card-body">
                         @yield('tekst')
                     </div>
