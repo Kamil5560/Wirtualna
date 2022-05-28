@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -38,12 +39,12 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  StoreGroupRequest  $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreGroupRequest $request): RedirectResponse
     {
-        $group = new Group($request->all());
+        $group = new Group($request->validated());
         $group->save();
         return redirect(route('AdminGroup'));
     }
