@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('Tytulowa')
-    Edycja grupy
+    {{ __('wu.group.add_form.title_edit', ['name' => $group->name]) }}
 @endsection
 
 @section('tekst')

@@ -27,4 +27,19 @@ class StoreGroupRequest extends FormRequest
             'name' => 'required|max:255'
         ];
     }
+
+    public function messages()
+    {
+        return [
+//            'name.required' => 'Jest wymagane pole nazwa'
+            'name.required' => 'Jest wymagane pole :attribute'
+        ]; // TODO: Nadawanie konkretnego komunikatu przy błędzie dla danego pola
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'nazwa grupy'
+        ];// TODO: Nadanie danemu atrybutowi konkretnej nazwy
+    }
 }

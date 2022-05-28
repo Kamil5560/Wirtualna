@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('Tytulowa')
-    Dodawanie grupy
+    {{ __('wu.group.add_form.title_add') }}
 @endsection
 
 @section('tekst')

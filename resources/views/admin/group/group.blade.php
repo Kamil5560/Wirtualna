@@ -3,7 +3,7 @@
 @section('Tytulowa')
     <div class="row">
         <div class="col-2">
-            <h3>Grupy</h3>
+            <h3>{{ __('wu.group.add_form.title') }}</h3>
         </div>
         <div class="col-10">
             <a class="float-end" href=" {{ route('AdminGroupCreate') }}">
