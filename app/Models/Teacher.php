@@ -4,28 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Group extends Model
+class Teacher extends Model
 {
     use HasFactory;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
+        'surname',
     ];
 
-    public function student(): HasMany
+    public function teacherSubject(): HasMany
     {
-        return $this->hasMany(Student::class);
-    }
-    public function subjectClass(): HasMany
-    {
-        return $this->hasMany(SubjectClass::class);
+        return $this->hasMany(TeacherSubject::class);
     }
 }

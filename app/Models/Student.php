@@ -7,25 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Group extends Model
+class Student extends Model
 {
     use HasFactory;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
+        'surname',
+        'PESEL',
+        'groups_id',
     ];
 
-    public function student(): HasMany
+
+    public function group(): BelongsTo
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Group::class);
     }
-    public function subjectClass(): HasMany
+
+    public function studentMarks(): HasMany
     {
-        return $this->hasMany(SubjectClass::class);
+        return $this->hasMany(StudentMarks::class);
     }
 }

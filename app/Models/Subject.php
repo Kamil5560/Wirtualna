@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Group extends Model
+class Subject extends Model
 {
     use HasFactory;
 
@@ -20,9 +19,13 @@ class Group extends Model
         'name',
     ];
 
-    public function student(): HasMany
+    public function studentMarks(): HasMany
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(StudentMarks::class);
+    }
+    public function teacherSubject(): HasMany
+    {
+        return $this->hasMany(TeacherSubject::class);
     }
     public function subjectClass(): HasMany
     {

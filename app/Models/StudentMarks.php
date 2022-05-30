@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Group extends Model
+class StudentMarks extends Model
 {
     use HasFactory;
 
@@ -17,15 +16,18 @@ class Group extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'marks',
+        'student_id',
+        'subject_id',
     ];
 
-    public function student(): HasMany
+    public function subject(): BelongsTo
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Subject::class);
     }
-    public function subjectClass(): HasMany
+
+    public function student(): BelongsTo
     {
-        return $this->hasMany(SubjectClass::class);
+        return $this->belongsTo(Student::class);
     }
 }
