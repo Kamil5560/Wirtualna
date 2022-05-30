@@ -21,6 +21,7 @@ class Student extends Model
         'surname',
         'PESEL',
         'groups_id',
+        'user_id',
     ];
 
 
@@ -32,5 +33,9 @@ class Student extends Model
     public function studentMarks(): HasMany
     {
         return $this->hasMany(StudentMarks::class);
+    }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

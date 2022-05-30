@@ -48,6 +48,17 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_id')->nullable()->after('id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
         });
+
+        //user
+        Schema::table('students', function (Blueprint $table) {
+            $table->unsignedBigInteger('users_id')->nullable()->after('PESEL');
+            $table->foreign('users_id')->references('id')->on('users');
+        });
+
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->unsignedBigInteger('users_id')->nullable()->after('surname');
+            $table->foreign('users_id')->references('id')->on('users');
+        });
     }
 
     /**
@@ -92,5 +103,17 @@ return new class extends Migration
             $table->dropForeign('teacher_subjects_teacher_id_foreign');
             $table->dropColumn('teacher_id');
         });
+
+        //user
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropForeign('students_users_id_foreign');
+            $table->dropColumn('users_id');
+        });
+
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->dropForeign('teachers_users_id_foreign');
+            $table->dropColumn('users_id');
+        });
+
     }
 };
