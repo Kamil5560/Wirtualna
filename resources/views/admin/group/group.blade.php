@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('menu')
 
 @section('Tytulowa')
     <div class="row">

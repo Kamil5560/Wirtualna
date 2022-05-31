@@ -1,4 +1,8 @@
-@extends('admin')
+@extends('menu')
+
+@section('Tytulowa')
+    Strona główna
+@endsection
 
 @section('tekst')
 

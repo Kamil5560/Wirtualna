@@ -9,6 +9,7 @@
                             </button> //TODO: to nie działa. Jak się zmieniejsza strony to ni chuja nie działa
                 -->            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
+                        @can('isAdmin')
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
                         </li>
@@ -36,6 +37,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Zmień hasło użytkownika</a>
                         </li>
+                        @endcan
                     </ul>
                 </div>
             </nav>

@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('menu')
 
 @section('Tytulowa')
     {{ __('wu.group.add_form.title_edit', ['name' => $group->name]) }}

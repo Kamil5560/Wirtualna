@@ -16,4 +16,5 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
     }
+    //TODO: lekcja #36 opisane co to jest. Dodawanie ręczne do bazy danych. Ale tutaj nie ma sensu.
 }
