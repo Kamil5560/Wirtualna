@@ -6,7 +6,7 @@
 
 @section('tekst')
     <div class="card-body">
-        <form method="POST" action="{{ route('AdminGroupStore') }}">
+        <form method="POST" action="{{ route('group.store') }}">
             @csrf
 
             <div class="row mb-3">

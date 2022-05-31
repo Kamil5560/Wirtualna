@@ -6,7 +6,7 @@
             <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title') }}</h3>
         </div>
         <div class="col-10">
-            <a class="float-end" href=" {{ route('AdminGroupCreate') }}">
+            <a class="float-end" href=" {{ route('group.create') }}">
                 <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
             </a>
         </div>
@@ -36,12 +36,12 @@
                         <th scope="row">{{ $group->id }}</th>
                         <td>{{ $group->name }}</td>
                         <td>
-                            <a href="{{ route('AdminGroupShow', $group->id) }}">
+                            <a href="{{ route('group.show', $group->id) }}">
                                 <button class="btn btn-primary btn-sm">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </a>
-                            <a href="{{ route('AdminGroupEdit', $group->id) }}">
+                            <a href="{{ route('group.edit', $group->id) }}">
                                 <button class="btn btn-success btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>

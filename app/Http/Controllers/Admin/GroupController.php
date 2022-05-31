@@ -46,7 +46,7 @@ class GroupController extends Controller
     {
         $group = new Group($request->validated());
         $group->save();
-        return redirect(route('AdminGroup'));
+        return redirect(route('AdminGroup'))->with('status', 'Group stored!');
     }
 
     /**

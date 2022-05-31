@@ -14,10 +14,10 @@
                             <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('AdminGroup') }}">Grupy</a>
+                            <a class="nav-link" href="{{ route('group.index') }}">Grupy</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('AdminTeacher') }}">Wykładowcy</a>
+                            <a class="nav-link" href="{{ route('teacher.index') }}">Wykładowcy</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Oceny</a>
