@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+mix.browserSync('wu.test');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -15,6 +17,3 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/delete.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
-
-mix.browserSync('wu.test');
-//TODO zmiany przeładowują się bez odświeżania strony

@@ -3,11 +3,11 @@
 @section('Tytulowa')
     <div class="row">
         <div class="col-2">
-            <h3>{{ __('wu.group.add_form.title') }}</h3>
+            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title') }}</h3>
         </div>
         <div class="col-10">
             <a class="float-end" href=" {{ route('AdminGroupCreate') }}">
-                <button type="button" class="btn btn-primary">Dodaj</button>
+                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
             </a>
         </div>
     </div>
@@ -38,16 +38,16 @@
                         <td>
                             <a href="{{ route('AdminGroupShow', $group->id) }}">
                                 <button class="btn btn-primary btn-sm">
-                                    P
+                                    <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </a>
                             <a href="{{ route('AdminGroupEdit', $group->id) }}">
                                 <button class="btn btn-success btn-sm">
-                                    E
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                             </a>
                             <button class="btn btn-danger btn-sm delete" data-id="{{ $group->id }}">
-                                X
+                                <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>
                     </tr>
