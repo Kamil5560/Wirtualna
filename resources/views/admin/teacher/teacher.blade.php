@@ -1,6 +1,6 @@
 @extends('menu')
 
-@section('tekst')
+@section('text')
 
     @if (session('status'))
         <div class="alert alert-success" role="alert">

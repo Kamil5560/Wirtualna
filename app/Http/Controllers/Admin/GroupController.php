@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -46,7 +47,7 @@ class GroupController extends Controller
     {
         $group = new Group($request->validated());
         $group->save();
-        return redirect(route('AdminGroup'))->with('status', 'Group stored!');
+        return redirect(route('group.index'))->with('status', __('wu.status.groups.create'));
     }
 
     /**
@@ -86,7 +87,7 @@ class GroupController extends Controller
     {
         $group->fill($request->all());
         $group->save();
-        return redirect(route('AdminGroup'));
+        return redirect(route('group.index'))->with('status', __('wu.status.groups.update'));
     }
 
     /**
@@ -99,6 +100,7 @@ class GroupController extends Controller
     {
         try {
             $group->delete();
+            Session::flash('status', __('wu.status.groups.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

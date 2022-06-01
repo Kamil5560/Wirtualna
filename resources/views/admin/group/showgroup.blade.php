@@ -1,10 +1,10 @@
 @extends('menu')
 
-@section('Tytulowa')
+@section('title')
     Podgląd grupy
 @endsection
 
-@section('tekst')
+@section('text')
     <div class="card-body">
             @csrf
 

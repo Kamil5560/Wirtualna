@@ -1,6 +1,6 @@
 @extends('menu')
 
-@section('Tytulowa')
+@section('title')
     <div class="row">
         <div class="col-2">
             <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title') }}</h3>
@@ -13,13 +13,8 @@
     </div>
 @endsection
 
-@section('tekst')
-
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+@section('text')
+    @include('helpers.flash-messages')
     <div class="container">
         <div class="row">
             <table class="table table-hover">

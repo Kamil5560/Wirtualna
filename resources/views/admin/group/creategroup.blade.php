@@ -1,10 +1,10 @@
 @extends('menu')
 
-@section('Tytulowa')
+@section('title')
     {{ __('wu.group.add_form.title_add') }}
 @endsection
 
-@section('tekst')
+@section('text')
     <div class="card-body">
         <form method="POST" action="{{ route('group.store') }}">
             @csrf

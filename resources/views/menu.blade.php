@@ -50,9 +50,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">@yield('Tytulowa')</div>
+                    <div class="card-header">@yield('title')</div>
                     <div class="card-body">
-                        @yield('tekst')
+                        @yield('text')
                     </div>
                 </div>
             </div>
