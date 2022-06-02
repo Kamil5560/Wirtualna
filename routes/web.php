@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Admin
 Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/group', GroupController::class);
-
-    Route::get('/admin/teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index'])->name('teacher.index');
-    Route::delete('/admin/teacher/{user}', [App\Http\Controllers\Admin\TeacherController::class, 'destroy']);
+    Route::resource('/admin/teacher', TeacherController::class);
 });
 
 //Route::get('/admin/group', [App\Http\Controllers\Admin\GroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index

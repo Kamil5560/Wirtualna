@@ -51,7 +51,6 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'alpha', 'max:255'],
-            'surname' => ['required', 'alpha', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], //TODO: tu jest walidacja na maila. Będzie trzeba to zmienić, aby był nick a nie email
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

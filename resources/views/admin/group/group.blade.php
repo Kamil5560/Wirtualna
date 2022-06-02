@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                 @foreach($groups as $group)
+                    @if($group->name!='brak')
                     <tr>
                         <th scope="row">{{ $group->id }}</th>
                         <td>{{ $group->name }}</td>
@@ -46,6 +47,7 @@
                             </button>
                         </td>
                     </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

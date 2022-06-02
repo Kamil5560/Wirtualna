@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTeacherRequest;
+use App\Models\Teacher;
 use App\Models\User;
 use Exception;
 use Illuminate\Console\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use function response;
-use function view;
+use function GuzzleHttp\Promise\all;
 
 class TeacherController extends Controller
 {
@@ -23,29 +26,59 @@ class TeacherController extends Controller
     public function index(): Application|Factory|View
     {
         return view('admin.teacher.teacher', [
-            'users' => User::paginate(3)
+            'teachers' => Teacher::paginate(10),
+            'users' => User::all(),
+
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view("admin.teacher.createteacher", [
+            'users' => User::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request   $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request  $request): RedirectResponse
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => 'required',
+        ]);
+        $user = new User();
+        $teacher = new Teacher();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->role = $request->input('role');
+        $user->save();
+        $data_user = User::all();
+        $email = $request->input('email');
+        foreach ($data_user as $users){
+            if($users->email == $email) {
+                $user_id = $users->id;
+                break;
+            }
+        }
+        $teacher->name = $request->input('name');
+        $teacher->surname = $request->input('surname');
+        $teacher->users_id = $user_id;
+        $teacher->save();
+        return redirect(route('teacher.index'))->with('status', __('wu.status.teacher.create'));
     }
 
     /**

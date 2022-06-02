@@ -1,40 +1,65 @@
 @extends('menu')
 
+@section('title')
+    <div class="row">
+        <div class="col-10">
+            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.teacher.add_form.title') }}</h3>
+        </div>
+        <div class="col-2">
+            <a class="float-end" href=" {{ route('teacher.create') }}">
+                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+            </a>
+        </div>
+    </div>
+@endsection
+
 @section('text')
 
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+    @include('helpers.flash-messages')
 <div class="container">
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Email</th>
             <th scope="col">Imię</th>
             <th scope="col">Nazwisko</th>
+            <th scope="col">Email</th>
+            <th scope="col">Przedmiot</th>
             <th scope="col">Akcja</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($teachers as $teacher)
+            @foreach($users as $user)
+                @if($user->id == $teacher->users_id)
             <tr>
-                <th scope="row">{{ $user->id }}</th>
+                <th scope="row">{{ $teacher->id }}</th>
+                <td>{{ $teacher->name }}</td>
+                <td>{{ $teacher->surname }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->name }}</td>
                 <td>-</td>
                 <td>
-                    <button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">
-                        X
+                    <a href="{{ route('group.show', $teacher->id) }}">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </a>
+                    <a href="{{ route('group.edit', $teacher->id) }}">
+                        <button class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </a>
+                    <button class="btn btn-danger btn-sm delete" data-id="{{ $teacher->id }}">
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                 </td>
             </tr>
+            @endif
+            @endforeach
         @endforeach
         </tbody>
     </table>
-    {{ $users->links() }}
+    {{ $teachers->links() }}
 </div>
 @endsection
 
