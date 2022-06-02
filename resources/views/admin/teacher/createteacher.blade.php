@@ -37,19 +37,10 @@
                     @enderror
                 </div>
 
-{{--                <label for="surname" class="col-md-4 col-form-label text-md-right">Wybierz konto:</label>--}}
-{{--                <div class="col-md-6">--}}
-{{--                <select id="users_id" class="form-select form-select-lg" aria-label=".form-select-lg example" required autofocus name="users_id">--}}
-{{--                    @foreach($users as $user)--}}
-{{--                    <option selected>Wybierz konto</option>--}}
-{{--                    <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--                </div>--}}
-
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
 
                 <div class="col-md-6">
+
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" required autocomplete="email" autofocus>
 

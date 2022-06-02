@@ -12,7 +12,7 @@ return [
         'add_form' => [
             'title' => "Wykładowcy",
             'title_add' => "Dodawanie wykładowcy",
-            'title_edit' => "Edycja grupy :name",
+            'title_edit' => "Edycja wykładowcy :name",
         ]
     ],
     'status' => [
@@ -25,7 +25,12 @@ return [
             'create' => 'Wykładowca została dodany',
             'update' => 'Wykładowca została zaktualizowany',
             'delete' => 'Wykładowca została usunięty',
-]
+        ],
+        'user' => [
+            'create' => 'Grupa została dodana',
+            'update' => 'Użytkownik został zaktualizowany',
+            'delete' => 'Grupa została usunięta',
+        ],
     ],
     'role' => [
         'teacher' => 'Wykładowca',

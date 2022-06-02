@@ -39,12 +39,12 @@
                 <td>{{ $user->email }}</td>
                 <td>-</td>
                 <td>
-                    <a href="{{ route('group.show', $teacher->id) }}">
+                    <a href="{{ route('teacher.show', $teacher->id) }}">
                         <button class="btn btn-primary btn-sm">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </a>
-                    <a href="{{ route('group.edit', $teacher->id) }}">
+                    <a href="{{ route('teacher.edit', $teacher->id) }}">
                         <button class="btn btn-success btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>

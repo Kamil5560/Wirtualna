@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTeacherRequest;
+use App\Models\Group;
 use App\Models\Teacher;
 use App\Models\User;
 use Exception;
+use Illuminate\Auth\GuardHelpers;
 use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,6 +43,7 @@ class TeacherController extends Controller
     {
         return view("admin.teacher.createteacher", [
             'users' => User::all(),
+            'teacher' => Teacher::all(),
         ]);
     }
 
@@ -95,24 +98,34 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Teacher $teacher
+     * @param  User $user
+     * @return View
      */
-    public function edit($id)
+    public function edit(Teacher $teacher, User $user): View
     {
-        //
+        return view("admin.teacher.editteacher", [
+            'teacher' => $teacher,
+            'user' => $user,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Teacher $teacher
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher): RedirectResponse
     {
-        //
+        $teacher->fill([
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'users_id' => $request->input('users_id'),
+        ]);
+        $teacher->save();
+        return redirect(route('teacher.index'))->with('status', __('wu.status.teacher.update'));
     }
 
     /**
