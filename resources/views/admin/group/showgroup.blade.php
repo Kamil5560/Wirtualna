@@ -1,7 +1,13 @@
 @extends('menu')
 
 @section('title')
-    Podgląd grupy
+    <div class="row">
+        <div class="col-8">
+            <h3>
+                <i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title_show', ['name' => $group->name]) }}
+            </h3>
+        </div>
+    </div>
 @endsection
 
 @section('text')

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-8">
             <h3>
-                <i class="fa-solid fa-users-rectangle"></i> {{ __('wu.teacher.add_form.title_edit', ['name' => $user->name]) }}
+                <i class="fa-solid fa-users-rectangle"></i> {{ __('wu.user.add_form.title_edit', ['name' => $user->name]) }}
             </h3>
         </div>
     </div>

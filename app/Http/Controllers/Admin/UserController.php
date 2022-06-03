@@ -45,12 +45,14 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  User $user
+     * @return View
      */
-    public function show($id)
+    public function show(User $user): View
     {
-        //
+        return view("admin.user.showuser", [
+            'user' => $user
+        ]);
     }
 
     /**

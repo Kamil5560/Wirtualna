@@ -6,6 +6,7 @@ return [
             'title' => "Grupy",
             'title_add' => "Dodawanie grupy",
             'title_edit' => "Edycja grupy :name",
+            'title_show' => "Podgląd grupy :name",
         ]
     ],
     'teacher' => [
@@ -13,6 +14,13 @@ return [
             'title' => "Wykładowcy",
             'title_add' => "Dodawanie wykładowcy",
             'title_edit' => "Edycja wykładowcy :name",
+            'title_show' => "Podgląd wykładowcy :name",
+        ]
+    ],
+    'user' => [
+        'add_form' => [
+            'title_edit' => "Edycja użytkownika :name",
+            'title_show' => "Podgląd użytkownika :name",
         ]
     ],
     'status' => [
