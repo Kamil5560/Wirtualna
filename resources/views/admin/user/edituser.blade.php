@@ -12,7 +12,8 @@
 
 @section('text')
     <div class="card-body">
-        <form method="POST" action="{{ route('useredit.update', $user->id) }}">
+        <form method="POST" action="{{ route('user.update', $user->id) }}">
+            {{ method_field('PUT') }}
             @csrf
 
             <div class="row mb-3">

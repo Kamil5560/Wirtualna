@@ -6,7 +6,7 @@
             <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.teacher.add_form.title_show', ['name' => $teacher->name]) }}</h3>
         </div>
         <div class="col-4">
-            <a class="float-end" href=" {{ route('useredit.show', $teacher->users_id) }}">
+            <a class="float-end" href=" {{ route('user.show', $teacher->users_id) }}">
                 <button type="button" class="btn btn-primary">Podgląd konta <i class="fa-solid fa-magnifying-glass"></i></button>
             </a>
         </div>

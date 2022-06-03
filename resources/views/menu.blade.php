@@ -38,7 +38,7 @@
                                     <li><a class="dropdown-item" href="#">Przypisz nauczyciela do przedmiotu</a></li>
                                     <li><a class="dropdown-item" href="#">Wyświetl przedmioty dla grupy</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Administratorzy</a></li>
+                                    <li><a class="dropdown-item" href="{{ route("user.index") }}">Administratorzy</a></li>
                                 </ul>
                             </li>
 {{--                            <li class="nav-item active">--}}

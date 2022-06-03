@@ -19,6 +19,8 @@ return [
     ],
     'user' => [
         'add_form' => [
+            'title' => "Administratorzy",
+            'title_add' => "Dodawanie administratora",
             'title_edit' => "Edycja użytkownika :name",
             'title_show' => "Podgląd użytkownika :name",
         ]
@@ -35,7 +37,7 @@ return [
             'delete' => 'Wykładowca została usunięty',
         ],
         'user' => [
-            'create' => 'Grupa została dodana',
+            'create' => 'Użytkownik została dodany',
             'update' => 'Użytkownik został zaktualizowany',
             'delete' => 'Grupa została usunięta',
         ],

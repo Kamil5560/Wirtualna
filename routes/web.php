@@ -29,10 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/group', GroupController::class);
     Route::resource('/admin/teacher', TeacherController::class);
-    Route::get('/admin/user/edit/{user}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('useredit.edit');
-    Route::post('/admin/user/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('useredit.update');
-    Route::get('/admin/user/{user}', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('useredit.show');
-
+    Route::resource('/admin/user', UserController::class);
 });
 
 //Route::get('/admin/group', [App\Http\Controllers\Admin\GroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index
