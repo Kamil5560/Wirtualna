@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTeacherRequest;
-use App\Models\Group;
 use App\Models\Teacher;
 use App\Models\User;
 use Exception;
-use Illuminate\Auth\GuardHelpers;
 use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use function GuzzleHttp\Promise\all;
 
 class TeacherController extends Controller
 {
@@ -133,13 +129,13 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User $user
+     * @param  Teacher $teacher
      * @return JsonResponse
      */
-    public function destroy(User $user): JsonResponse
+    public function destroy(Teacher $teacher): JsonResponse
     {
         try {
-            $user->delete();
+            $teacher->delete();
             return response()->json([
                 'status' => 'success'
             ]);

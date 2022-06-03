@@ -65,19 +65,21 @@
                            autocomplete="new-password">
                 </div>
 
-                <label for="name" class="col-md-4 col-form-label text-md-right">Rola:</label>
+{{--                <label for="name" class="col-md-4 col-form-label text-md-right">Rola:</label>--}}
 
-                <div class="col-md-6">
-                    <select class="form-select" id="role" name="role" aria-label="Default select example">
-                        <option selected value="{{ $user->role }}">Aktualnie: {{ $user->role }}</option>
-                        <option disabled><hr class="dropdown-divider"></option>
-                        <option value="admin">admin</option>
-                        <option value="teacher">teacher</option>
-                        <option value="student">student</option>
-                    </select>
-                </div>
+{{--                <div class="col-md-6">--}}
+{{--                    <select class="form-select" id="role" name="role" aria-label="Default select example">--}}
+{{--                        <option selected value="{{ $user->role }}">Aktualnie: {{ $user->role }}</option>--}}
+{{--                        <option disabled><hr class="dropdown-divider"></option>--}}
+{{--                        <option value="admin">admin</option>--}}
+{{--                        <option value="teacher">teacher</option>--}}
+{{--                        <option value="student">student</option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
 
             </div>
+            <input id="role" type="text" class="form-control" name="role"
+                   value="{{ $user->role }}" hidden>
             <input id="id" type="text" class="form-control" name="id"
                    value="{{$user->id}}" hidden>
             <input id="passwordhash" type="text" class="form-control" name="passwordhash"

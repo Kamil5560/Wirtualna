@@ -38,12 +38,12 @@
                                     <li><a class="dropdown-item" href="#">Przypisz nauczyciela do przedmiotu</a></li>
                                     <li><a class="dropdown-item" href="#">Wyświetl przedmioty dla grupy</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Coś innego</a></li>
+                                    <li><a class="dropdown-item" href="#">Administratorzy</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Zmień hasło użytkownika</a>
-                            </li>
+{{--                            <li class="nav-item active">--}}
+{{--                                <a class="nav-link" href="#">Zmień hasło użytkownika</a>--}}
+{{--                            </li>--}}
                         @endcan
                     </ul>
                 </div>
