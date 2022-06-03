@@ -21,10 +21,10 @@
                                 <a class="nav-link" href="{{ route('teacher.index') }}">Wykładowcy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Studenci</a>
+                                <a class="nav-link" href="{{ route('student.index') }}">Studenci</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Przedmioty</a>
+                                <a class="nav-link" href="{{ route('subject.index') }}">Przedmioty</a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Oceny</a>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +32,8 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/group', GroupController::class);
     Route::resource('/admin/teacher', TeacherController::class);
     Route::resource('/admin/user', UserController::class);
+    Route::resource('/admin/student', StudentController::class);
+    Route::resource('/admin/subject', SubjectController::class);
 });
 
 //Route::get('/admin/group', [App\Http\Controllers\Admin\GroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index

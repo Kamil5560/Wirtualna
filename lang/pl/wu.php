@@ -25,6 +25,22 @@ return [
             'title_show' => "Podgląd użytkownika :name",
         ]
     ],
+    'student' => [
+        'add_form' => [
+            'title' => "Studenci",
+            'title_add' => "Dodawanie studenta",
+            'title_edit' => "Edycja studenta :name",
+            'title_show' => "Podgląd studenta :name",
+        ]
+    ],
+    'subject' => [
+        'add_form' => [
+            'title' => "Przedmioty",
+            'title_add' => "Dodawanie przedmiotu",
+            'title_edit' => "Edycja przedmiotu :name",
+            'title_show' => "Podgląd przedmiotu :name",
+        ]
+    ],
     'status' => [
         'groups' => [
             'create' => 'Grupa została dodana',
@@ -39,7 +55,17 @@ return [
         'user' => [
             'create' => 'Użytkownik została dodany',
             'update' => 'Użytkownik został zaktualizowany',
-            'delete' => 'Grupa została usunięta',
+            'delete' => 'Użytkownik został usunięty',
+        ],
+        'student' => [
+            'create' => 'Student został dodany',
+            'update' => 'Student został zaktualizowany',
+            'delete' => 'Student został usunięty',
+        ],
+        'subject' => [
+            'create' => 'Przedmiot został dodany',
+            'update' => 'Przedmiot został zaktualizowany',
+            'delete' => 'Przedmiot został usunięty',
         ],
     ],
     'role' => [
