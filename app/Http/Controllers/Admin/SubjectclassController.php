@@ -121,4 +121,5 @@ class SubjectclassController extends Controller
             ])->setStatusCode(500);
         }
     }
+    //TODO: usuwanie nie dzała. To samo w grupie i przedmiocie
 }
