@@ -34,9 +34,8 @@
                                     Inne
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Dodaj przedmiot do grupy</a></li>
+                                    <li><a class="dropdown-item" href="{{ route("subjectclass.index") }}">Wyświetl przedmioty dla grupy</a></li>
                                     <li><a class="dropdown-item" href="#">Przypisz nauczyciela do przedmiotu</a></li>
-                                    <li><a class="dropdown-item" href="#">Wyświetl przedmioty dla grupy</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route("user.index") }}">Administratorzy</a></li>
                                 </ul>

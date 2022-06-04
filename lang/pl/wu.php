@@ -41,6 +41,14 @@ return [
             'title_show' => "Podgląd przedmiotu :name",
         ]
     ],
+    'subjectclass' => [
+        'add_form' => [
+            'title' => "Wybierz grupę",
+            'title_add' => "Dodawanie studenta",
+            'title_edit' => "Edycja studenta :name",
+            'title_show' => "Podgląd studenta :name",
+        ]
+    ],
     'status' => [
         'groups' => [
             'create' => 'Grupa została dodana',
