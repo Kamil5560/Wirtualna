@@ -35,7 +35,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route("subjectclass.index") }}">Wyświetl przedmioty dla grupy</a></li>
-                                    <li><a class="dropdown-item" href="#">Przypisz nauczyciela do przedmiotu</a></li>
+                                    <li><a class="dropdown-item" href="{{ route("teachersubject.index") }}">Przypisz nauczyciela do przedmiotu</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route("user.index") }}">Administratorzy</a></li>
                                 </ul>
@@ -44,6 +44,43 @@
 {{--                                <a class="nav-link" href="#">Zmień hasło użytkownika</a>--}}
 {{--                            </li>--}}
                         @endcan
+                        @can('isTeacher')
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Grupy</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Wykładowcy</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Studenci</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Przedmioty</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Oceny</a>
+                                </li>
+                            @endcan
+                        @can('isStudent')
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Grupy</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Wykładowcy</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Przedmioty</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Oceny</a>
+                                </li>
+                            @endcan
                     </ul>
                 </div>
             </nav>

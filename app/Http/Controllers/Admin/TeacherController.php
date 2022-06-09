@@ -135,6 +135,15 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher): JsonResponse
     {
         try {
+//            $id_teacher = Teacher::all();
+//            $id_user = $id_teacher->users_id->where('id', $teacher);
+//            $user_delete = User::all();
+//            foreach ($user_delete as $user_deletes){
+//                if($user_deletes->id == $id_user)
+//                {
+//                    $user_delete->delete();
+//                }
+//            }
             $teacher->delete();
             return response()->json([
                 'status' => 'success'

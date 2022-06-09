@@ -110,5 +110,6 @@ class GroupController extends Controller
                 'message' => 'Wystąpił błąd!'
             ])->setStatusCode(500);
         }
+        //TODO: Sprawdzić czy jest jakieś powiazanie w tabeli groupssubject. Jeżeli tak to błąd i usuń powiązania jeżeli nie to usuń
     }
 }

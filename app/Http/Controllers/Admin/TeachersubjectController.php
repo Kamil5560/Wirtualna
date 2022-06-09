@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Group;
 use App\Models\Subject;
 use App\Models\SubjectClass;
+use App\Models\Teacher;
+use App\Models\TeacherSubject;
 use Exception;
 use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class SubjectclassController extends Controller
+class TeachersubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,11 +24,11 @@ class SubjectclassController extends Controller
      */
     public function index(): Application|Factory|View
     {
-        return view("admin.subject_class.subject_class", [
-            'groups' => Group::all(),
-            'subjects' => Subject::all(),
-            'subject_class' => SubjectClass::all(),
-        ]);
+        return view('admin.teacher_subject.teacher_subject', [
+            'teacher' => Teacher::all(),
+            'subject' => Subject::all(),
+            'teacher_subject' => TeacherSubject::all(),
+    ]);
     }
 
     /**
@@ -38,10 +38,10 @@ class SubjectclassController extends Controller
      */
     public function create(): View
     {
-        return view("admin.subject_class.create_subject_class", [
-            'groups' => Group::all(),
-            'subjects' => Subject::all(),
-            'subject_class' => SubjectClass::all(),
+        return view('admin.teacher_subject.create_teacher_subject', [
+            'teacher' => Teacher::all(),
+            'subject' => Subject::all(),
+            'teacher_subject' => TeacherSubject::all(),
         ]);
     }
 
@@ -51,17 +51,18 @@ class SubjectclassController extends Controller
      * @param  Request  $request
      * @return RedirectResponse
      */
-    public function store(Request  $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'groups_id' => 'required',
-            'subject_id' => 'required',
+            'teacher_id' => 'required',
+            'subjects_id' => 'required',
         ]);
-        $sc = new SubjectClass();
-        $sc->groups_id = $request->input('groups_id');
-        $sc->subject_id = $request->input('subject_id');
-        $sc->save();
-        return redirect(route('subjectclass.index'))->with('status', __('wu.status.teacher.create'));
+        $ts = new TeacherSubject();
+        $ts->teacher_id = $request->input('teacher_id');
+        $ts->subject_id = $request->input('subjects_id');
+        $ts->save();
+        return redirect(route('teachersubject.index'))->with('status', __('wu.status.teacher.create'));
+
     }
 
     /**
@@ -71,20 +72,20 @@ class SubjectclassController extends Controller
      */
     public function show(): View
     {
-        return view("admin.subject_class.show_subject_class", [
-            'groups' => Group::all(),
-            'subjects' => Subject::all()->sortBy('name'),
-            'subject_class' => SubjectClass::all()->sortBy('groups_id'),
+        return view('admin.teacher_subject.show_teacher_subject', [
+            'teacher' => Teacher::all(),
+            'subject' => Subject::all()->sortBy('name'),
+            'teacher_subject' => TeacherSubject::all()->sortBy('teacher_id'),
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Group $group
-     * @return View
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit($id)
     {
         //
     }
@@ -92,11 +93,11 @@ class SubjectclassController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  Group $group
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -104,13 +105,13 @@ class SubjectclassController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  SubjectClass $sc
+     * @param  TeacherSubject $ts
      * @return JsonResponse
      */
-    public function destroy(SubjectClass $sc): JsonResponse
+    public function destroy(TeacherSubject $ts): JsonResponse
     {
         try {
-            $sc->delete();
+            $ts->delete();
             return response()->json([
                 'status' => 'success'
             ]);

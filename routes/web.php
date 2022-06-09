@@ -36,9 +36,14 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/subject', SubjectController::class);
     Route::get('/admin/subjectclass', [App\Http\Controllers\Admin\SubjectclassController::class, 'index'])->name('subjectclass.index');
     Route::get('/admin/subjectclass/show', [App\Http\Controllers\Admin\SubjectclassController::class, 'show'])->name('subjectclass.show');
-    Route::delete('/admin/subjectclass/show/{subjectclass}', [App\Http\Controllers\Admin\SubjectclassController::class, 'destroy']);
+    Route::delete('/admin/subjectclass/show/{sc}', [App\Http\Controllers\Admin\SubjectclassController::class, 'destroy']);
     Route::get('/admin/subjectclass/create', [App\Http\Controllers\Admin\SubjectclassController::class, 'create'])->name('subjectclass.create');
     Route::post('/admin/subjectclass', [App\Http\Controllers\Admin\SubjectclassController::class, 'store'])->name('subjectclass.store');
+    Route::get('/admin/teachersubject', [App\Http\Controllers\Admin\TeachersubjectController::class, 'index'])->name('teachersubject.index');
+    Route::get('/admin/teachersubject/show', [App\Http\Controllers\Admin\TeachersubjectController::class, 'show'])->name('teachersubject.show');
+    Route::delete('/admin/teachersubject/show/{ts}', [App\Http\Controllers\Admin\TeachersubjectController::class, 'destroy']);
+    Route::get('/admin/teachersubject/create', [App\Http\Controllers\Admin\TeachersubjectController::class, 'create'])->name('teachersubject.create');
+    Route::post('/admin/teachersubject', [App\Http\Controllers\Admin\TeachersubjectController::class, 'store'])->name('teachersubject.store');
 
 });
 
