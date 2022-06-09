@@ -35,7 +35,14 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/user', UserController::class);
     Route::resource('/admin/student', StudentController::class);
     Route::resource('/admin/subject', SubjectController::class);
-    Route::resource('/admin/marks', MarksController::class);
+//    Route::resource('/admin/marks', MarksController::class);
+    Route::get('/admin/marks', [App\Http\Controllers\Admin\MarksController::class, 'index'])->name('marks.index');
+    Route::get('/admin/marks/show/{group}', [App\Http\Controllers\Admin\MarksController::class, 'showsubject'])->name('marks.showsubject');
+    Route::get('/admin/marks/show/{groups}/{subjects}', [App\Http\Controllers\Admin\MarksController::class, 'showmarks'])->name('marks.showmarks');
+    Route::get('/admin/marks/show/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Admin\MarksController::class, 'editmarks'])->name('marks.edit');
+    Route::post('/admin/marks/show/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Admin\MarksController::class, 'update'])->name('marks.update');
+
+
     Route::get('/admin/subjectclass', [App\Http\Controllers\Admin\SubjectclassController::class, 'index'])->name('subjectclass.index');
     Route::get('/admin/subjectclass/show', [App\Http\Controllers\Admin\SubjectclassController::class, 'show'])->name('subjectclass.show');
     Route::delete('/admin/subjectclass/show/{sc}', [App\Http\Controllers\Admin\SubjectclassController::class, 'destroy']);

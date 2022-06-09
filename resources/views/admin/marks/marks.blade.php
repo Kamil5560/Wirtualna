@@ -15,42 +15,50 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Nazwa grupy</th>
-                    <th scope="col">Akcje</th>
+                    <th class="col-7">Imię i nazwisko</th>
+                    <th class="col-3">Ocena</th>
+                    <th class="col-4">Akcje</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($groups as $group)
-                    @if($group->name!='brak')
-                        <tr>
-                            <td>{{ $group->name }}</td>
-                            <td>
-                                <a href="{{ route('group.show', $group->id) }}">
-                                    <button class="btn btn-primary btn-sm">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </a>
-{{--                                <a href="{{ route('group.edit', $group->id) }}">--}}
-{{--                                    <button class="btn btn-success btn-sm">--}}
-{{--                                        <i class="fa-solid fa-pen-to-square"></i>--}}
-{{--                                    </button>--}}
-{{--                                </a>--}}
-{{--                                <button class="btn btn-danger btn-sm delete" data-id="{{ $group->id }}">--}}
-{{--                                    <i class="fa-solid fa-trash"></i>--}}
-{{--                                </button>--}}
-                            </td>
-                        </tr>
-                    @endif
+                @foreach($student as $students)
+                    <tr>
+                        @if($students->groups_id == $group_id)
+                            <td>{{ $students->name }} {{ $students->surname }}</td>
+                            <?php $flaga = false ?>
+                            @foreach($sm as $sms)
+                                @if($sms->subject_id == $subject_id && $sms->student_id == $students->id)
+                                    <td>{{ $sms->marks }}</td>
+                                    <?php $sm_id = $sms->id;
+                                    $flaga = true;
+                                    ?>
+                                        <td>
+                                            <a href="{{ route('marks.edit', ['groups' => $group_id, 'subjects' => $subject_id, 'sm_id' => $sm_id, 'student'=>$students->id] ) }}">
+                                                <button class="btn btn-primary btn-sm">
+                                                    Edytuj
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                @endif
+                            @endforeach
+                            @if($flaga == false)
+                                <td>brak</td>
+                                <?php $sm_id = 0 ?>
+                                <td>
+                                    <a href="{{ route('marks.edit', ['groups' => $group_id, 'subjects' => $subject_id, 'sm_id' => $sm_id, 'student'=>$students->id] ) }}">
+                                        <button class="btn btn-primary btn-sm">
+                                            Edytuj
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            @endif
+                        @endif
+                    </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-
-@section('javascript')
-    const deleteUrl = "{{ url('admin/group') }}/";
-@endsection
-@section('js-files')
-    <script src="{{ asset('js/delete.js') }}"></script>
 @endsection
