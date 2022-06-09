@@ -40,6 +40,16 @@
                        value="{{ $student->PESEL }}" disabled autocomplete="PESEL" autofocus>
             </div>
 
+            <label for="name" class="col-md-4 col-form-label text-md-right">Grupa:</label>
+
+            <div class="col-md-6">
+                <select class="form-select" aria-label="Default select example" name="groups_id" id="groups_id" disabled>
+                    @foreach($groups as $group)
+                        <option value="{{$group->id}}" @if($student->groups_id == $group->id) selected @endif>{{$group->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="col-md-6">
                 <input id="users_id" type="text" class="form-control" name="users_id"
                        value="{{$student->users_id}}" hidden>

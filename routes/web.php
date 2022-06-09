@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/user', UserController::class);
     Route::resource('/admin/student', StudentController::class);
     Route::resource('/admin/subject', SubjectController::class);
+    Route::resource('/admin/marks', MarksController::class);
     Route::get('/admin/subjectclass', [App\Http\Controllers\Admin\SubjectclassController::class, 'index'])->name('subjectclass.index');
     Route::get('/admin/subjectclass/show', [App\Http\Controllers\Admin\SubjectclassController::class, 'show'])->name('subjectclass.show');
     Route::delete('/admin/subjectclass/show/{sc}', [App\Http\Controllers\Admin\SubjectclassController::class, 'destroy']);

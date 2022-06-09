@@ -2,12 +2,17 @@
 
 @section('title')
     <div class="row">
-        <div class="col-2">
+        <div class="col-4">
             <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title') }}</h3>
         </div>
-        <div class="col-10">
+        <div class="col-5">
+            <a class="float-end" href=" {{ route('student.index') }}">
+                <button type="button" class="btn btn-success">Zmień grupę studentowi <i class="fa-solid fa-pen-to-square"></i></button>
+            </a>
+        </div>
+        <div class="col-3">
             <a class="float-end" href=" {{ route('group.create') }}">
-                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+                <button type="button" class="btn btn-primary">Dodaj grupę <i class="fa-solid fa-plus"></i></button>
             </a>
         </div>
     </div>
@@ -22,6 +27,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nazwa grupy</th>
+                    <th scope="col">Studenci</th>
                     <th scope="col">Akcje</th>
                 </tr>
                 </thead>
@@ -31,6 +37,13 @@
                     <tr>
                         <th scope="row">{{ $group->id }}</th>
                         <td>{{ $group->name }}</td>
+                        <td>
+                            @foreach($student as $students)
+                                @if($students->groups_id == $group->id)
+                                    {{ $students->name }} {{ $students->surname }},
+                                @endif
+                            @endforeach
+                        </td>
                         <td>
                             <a href="{{ route('group.show', $group->id) }}">
                                 <button class="btn btn-primary btn-sm">

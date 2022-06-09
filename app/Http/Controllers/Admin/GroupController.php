@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
+use App\Models\Student;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class GroupController extends Controller
     public function index(): View
     {
         return view("admin.group.group", [
-            'groups' => Group::paginate(5)
+            'groups' => Group::paginate(5),
+            'student' => Student::all(),
         ]);
     }
 

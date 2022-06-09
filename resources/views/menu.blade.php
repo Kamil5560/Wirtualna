@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="{{ route('subject.index') }}">Przedmioty</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Oceny</a>
+                                <a class="nav-link" href="{{ route('marks.index') }}">Oceny</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

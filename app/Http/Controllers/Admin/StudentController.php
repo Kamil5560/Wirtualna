@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use App\Models\Student;
 use App\Models\User;
+use Exception;
 use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,6 +41,7 @@ class StudentController extends Controller
         return view('admin.student.createstudent', [
             'student' => Student::all(),
             'user' => User::all(),
+            'groups' => Group::all(),
 
         ]);
     }
@@ -55,6 +58,7 @@ class StudentController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'PESEL' => 'required', 'min:11', 'max:11', 'numeric',
+            'groups_id' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => 'required',
@@ -78,6 +82,7 @@ class StudentController extends Controller
         $student->surname = $request->input('surname');
         $student->PESEL = $request->input('PESEL');
         $student->users_id = $user_id;
+        $student->groups_id = $request->input('groups_id');
         $student->save();
         return redirect(route('student.index'))->with('status', __('wu.status.student.create'));
     }
@@ -91,7 +96,8 @@ class StudentController extends Controller
     public function show(Student $student): View
     {
         return view("admin.student.showstudent", [
-            'student' => $student
+            'student' => $student,
+            'groups' => Group::all(),
         ]);
     }
 
@@ -104,7 +110,8 @@ class StudentController extends Controller
     public function edit(Student $student): View
     {
         return view("admin.student.editstudent", [
-            'student' => $student
+            'student' => $student,
+            'groups' => Group::all(),
         ]);
     }
 
@@ -122,6 +129,7 @@ class StudentController extends Controller
             'surname' => $request->input('surname'),
             'PESEL' => $request->input('PESEL'),
             'users_id' => $request->input('users_id'),
+            'groups_id' => $request->input('groups_id'),
         ]);
         $student->save();
         return redirect(route('student.index'))->with('status', __('wu.status.student.update'));
