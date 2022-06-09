@@ -2,12 +2,18 @@
 
 @section('title')
     <div class="row">
-        <div class="col-10">
+        <div class="col-4">
             <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.teacher.add_form.title') }}</h3>
         </div>
-        <div class="col-2">
+
+        <div class="col-5">
+            <a class="float-end" href=" {{ route('teachersubject.index') }}">
+                <button type="button" class="btn btn-success">Zmień przedmiot <i class="fa-solid fa-pen-to-square"></i></button>
+            </a>
+        </div>
+        <div class="col-3">
             <a class="float-end" href=" {{ route('teacher.create') }}">
-                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+                <button type="button" class="btn btn-primary">Dodaj wykładowce <i class="fa-solid fa-plus"></i></button>
             </a>
         </div>
     </div>
@@ -37,7 +43,17 @@
                 <td>{{ $teacher->name }}</td>
                 <td>{{ $teacher->surname }}</td>
                 <td>{{ $user->email }}</td>
-                <td>-</td>
+                <td>
+                    @foreach($ts as $fets)
+                        @if($fets->teacher_id == $teacher->id)
+                            @foreach($subject as $subjects)
+                                @if($subjects->id == $fets->subject_id)
+                                    {{ $subjects->name }},<br>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                </td>
                 <td>
                     <a href="{{ route('teacher.show', $teacher->id) }}">
                         <button class="btn btn-primary btn-sm">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\TeacherSubject;
 use App\Models\User;
 use Exception;
 use Illuminate\Console\Application;
@@ -26,7 +28,8 @@ class TeacherController extends Controller
         return view('admin.teacher.teacher', [
             'teachers' => Teacher::paginate(10),
             'users' => User::all(),
-
+            'ts' =>TeacherSubject::all(),
+            'subject' => Subject::all(),
         ]);
     }
 

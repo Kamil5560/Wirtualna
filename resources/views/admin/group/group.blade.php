@@ -40,7 +40,7 @@
                         <td>
                             @foreach($student as $students)
                                 @if($students->groups_id == $group->id)
-                                    {{ $students->name }} {{ $students->surname }},
+                                    {{ $students->name }} {{ $students->surname }},<br>
                                 @endif
                             @endforeach
                         </td>
