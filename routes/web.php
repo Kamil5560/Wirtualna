@@ -35,14 +35,11 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::resource('/admin/user', UserController::class);
     Route::resource('/admin/student', StudentController::class);
     Route::resource('/admin/subject', SubjectController::class);
-//    Route::resource('/admin/marks', MarksController::class);
     Route::get('/admin/marks', [App\Http\Controllers\Admin\MarksController::class, 'index'])->name('marks.index');
     Route::get('/admin/marks/show/{group}', [App\Http\Controllers\Admin\MarksController::class, 'showsubject'])->name('marks.showsubject');
     Route::get('/admin/marks/show/{groups}/{subjects}', [App\Http\Controllers\Admin\MarksController::class, 'showmarks'])->name('marks.showmarks');
     Route::get('/admin/marks/show/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Admin\MarksController::class, 'editmarks'])->name('marks.edit');
     Route::post('/admin/marks/show/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Admin\MarksController::class, 'update'])->name('marks.update');
-
-
     Route::get('/admin/subjectclass', [App\Http\Controllers\Admin\SubjectclassController::class, 'index'])->name('subjectclass.index');
     Route::get('/admin/subjectclass/show', [App\Http\Controllers\Admin\SubjectclassController::class, 'show'])->name('subjectclass.show');
     Route::delete('/admin/subjectclass/show/{sc}', [App\Http\Controllers\Admin\SubjectclassController::class, 'destroy']);
@@ -56,18 +53,25 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
 });
 
-//Route::get('/admin/group', [App\Http\Controllers\Admin\GroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index
-//Route::get('/admin/group/create', [App\Http\Controllers\Admin\GroupController::class, 'create'])->name('AdminGroupCreate')->middleware('auth'); //group.create
-//Route::post('/admin/group', [App\Http\Controllers\Admin\GroupController::class, 'store'])->name('AdminGroupStore')->middleware('auth'); //group.store
-//Route::get('/admin/group/edit/{group}', [App\Http\Controllers\Admin\GroupController::class, 'edit'])->name('AdminGroupEdit')->middleware('auth'); //group.edit
-//Route::post('/admin/group/{group}', [App\Http\Controllers\Admin\GroupController::class, 'update'])->name('AdminGroupUpdate')->middleware('auth'); //group.update
-//Route::delete('/admin/group/{group}', [App\Http\Controllers\Admin\GroupController::class, 'destroy'])->middleware('auth'); //group.destroy
-//Route::get('/admin/group/{group}', [App\Http\Controllers\Admin\GroupController::class, 'show'])->name('AdminGroupShow')->middleware('auth'); //group.show
-//Zmieniamy to na route::resource i działa to tak samo!
-
-
 //Student
-
+Route::middleware(['auth', 'can:isStudent'])->group(function () {
+    Route::get('/student/group', [App\Http\Controllers\Student\StudentgroupController::class, 'index'])->name('studentgroup.index');
+    Route::get('/student/group/{group}', [App\Http\Controllers\Student\StudentgroupController::class, 'show'])->name('studentgroup.show');
+    Route::get('/student/teacher', [App\Http\Controllers\Student\StudentteacherController::class, 'index'])->name('studentteacher.index');
+});
 
 
 //Teacher
+Route::middleware(['auth', 'can:isTeacher'])->group(function () {
+
+
+});
+
+//Route::get('/admin/group', [App\Http\Controllers\Admin\StudentgroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index
+//Route::get('/admin/group/create', [App\Http\Controllers\Admin\StudentgroupController::class, 'create'])->name('AdminGroupCreate')->middleware('auth'); //group.create
+//Route::post('/admin/group', [App\Http\Controllers\Admin\StudentgroupController::class, 'store'])->name('AdminGroupStore')->middleware('auth'); //group.store
+//Route::get('/admin/group/edit/{group}', [App\Http\Controllers\Admin\StudentgroupController::class, 'edit'])->name('AdminGroupEdit')->middleware('auth'); //group.edit
+//Route::post('/admin/group/{group}', [App\Http\Controllers\Admin\StudentgroupController::class, 'update'])->name('AdminGroupUpdate')->middleware('auth'); //group.update
+//Route::delete('/admin/group/{group}', [App\Http\Controllers\Admin\StudentgroupController::class, 'destroy'])->middleware('auth'); //group.destroy
+//Route::get('/admin/group/{group}', [App\Http\Controllers\Admin\StudentgroupController::class, 'show'])->name('AdminGroupShow')->middleware('auth'); //group.show
+//Zmieniamy to na route::resource i działa to tak samo!

@@ -157,5 +157,6 @@ class TeacherController extends Controller
                 'message' => 'Wystąpił błąd!'
             ])->setStatusCode(500);
         }
+        //TODO: Usuwanie konta
     }
 }

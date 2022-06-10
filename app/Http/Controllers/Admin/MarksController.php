@@ -123,13 +123,11 @@ class MarksController extends Controller
             }
         }
         $smquery = StudentMarks::all();
+        $marks = 0;
         foreach ($smquery as $fesm){
             if($fesm->id == $sm_id){
                 $marks = $fesm->marks;
                 break;
-            }
-            else{
-                $marks = 0;
             }
         }
         return view("admin.marks.editmarks", [

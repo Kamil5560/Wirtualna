@@ -71,10 +71,10 @@
                                 <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Grupy</a>
+                                <a class="nav-link" href="{{ route('studentgroup.index') }}">Grupy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Wykładowcy</a>
+                                <a class="nav-link" href="{{ route('studentteacher.index') }}">Wykładowcy</a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Informację o studencie</a>
