@@ -8,6 +8,7 @@ use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -103,7 +104,8 @@ class UserController extends Controller
         $role = $request->input('role');
         $password = $request->input('password');
         if($password != null){
-            $user->fill([ 'password' => $password ]);
+            $passwordhash = Hash::make($password);
+            $user->fill([ 'password' => $passwordhash ]);
         }
         else{
             $user->fill(['password' => $request->input('passwordhash'),]);

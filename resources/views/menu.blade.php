@@ -77,10 +77,10 @@
                                 <a class="nav-link" href="{{ route('studentteacher.index') }}">Wykładowcy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Informację o studencie</a>
+                                <a class="nav-link" href="{{ route('studentinfo.index') }}">Informacje o studencie</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Oceny</a>
+                                <a class="nav-link" href="{{ route('studentmarks.index') }}">Oceny</a>
                             </li>
                         @endcan
                     </ul>

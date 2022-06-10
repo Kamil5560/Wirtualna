@@ -58,6 +58,10 @@ Route::middleware(['auth', 'can:isStudent'])->group(function () {
     Route::get('/student/group', [App\Http\Controllers\Student\StudentgroupController::class, 'index'])->name('studentgroup.index');
     Route::get('/student/group/{group}', [App\Http\Controllers\Student\StudentgroupController::class, 'show'])->name('studentgroup.show');
     Route::get('/student/teacher', [App\Http\Controllers\Student\StudentteacherController::class, 'index'])->name('studentteacher.index');
+    Route::get('/student/info', [App\Http\Controllers\Student\StudentinfoController::class, 'index'])->name('studentinfo.index');
+    Route::get('/student/info/{user}', [App\Http\Controllers\Student\StudentinfoController::class, 'edit'])->name('studentinfo.edit');
+    Route::post('/student/info/{user}', [App\Http\Controllers\Student\StudentinfoController::class, 'update'])->name('studentinfo.update');
+    Route::get('/student/marks', [App\Http\Controllers\Student\StudentmarksController::class, 'index'])->name('studentmarks.index');
 });
 
 
