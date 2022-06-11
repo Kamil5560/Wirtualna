@@ -24,19 +24,19 @@
                     @if($scs->groups_id == $groups->id)
                         @foreach($subject as $subjects)
                             @if($scs->subject_id == $subjects->id)
-                        <tr>
-                            <td>{{ $subjects->name }}</td>
-                            <td>
-                                <a href="{{ route('marks.showmarks', ['groups' => $groups->id, 'subjects' => $subjects->id] ) }}">
-                                    <button class="btn btn-primary btn-sm">
-                                        Podglad studentów
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
+                                <tr>
+                                    <td>{{ $subjects->name }}</td>
+                                    <td>
+                                        <a href="{{ route('marks.showmarks', ['groups' => $groups->id, 'subjects' => $subjects->id] ) }}">
+                                            <button class="btn btn-primary btn-sm">
+                                                Podglad studentów
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
                             @endif
-                @endforeach
+                        @endforeach
                     @endif
                 @endforeach
                 </tbody>

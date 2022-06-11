@@ -63,7 +63,7 @@
                                 <a class="nav-link" href="{{ route('teacherinfo.index') }}">Informacje o wykładowcy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Oceny</a>
+                                <a class="nav-link" href="{{ route('teachermarks.index') }}">Oceny</a>
                             </li>
                         @endcan
                         @can('isStudent')

@@ -15,23 +15,31 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="col-8">Nazwa grupy</th>
+                    <th class="col-8">Przedmioty</th>
                     <th class="col-4">Akcje</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($groups as $group)
-                    @if($group->name!='brak')
+                @foreach($ts as $fets)
+                    @if($fets->teacher_id == $teacher_id)
                         <tr>
-                            <td>{{ $group->name }}</td>
                             <td>
-                                <a href="{{ route('marks.showsubject', $group->id) }}">
+                                @foreach($subject as $fesubject)
+                                    @if($fesubject->id == $fets->subject_id)
+                                        {{ $fesubject->name }}
+                                        <?php $subject_id = $fesubject->id ?>
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{ route('teachermarks.showgroup', ['subjects' => $subject_id] ) }}">
                                     <button class="btn btn-primary btn-sm">
-                                        Podglad ocen
+                                        Podglad grup
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </a>
                             </td>
+
                         </tr>
                     @endif
                 @endforeach

@@ -20,14 +20,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($groups as $group)
-                    @if($group->name!='brak')
+                @foreach($sc as $fesc)
+                    @if($fesc->subject_id == $subject_id)
                         <tr>
-                            <td>{{ $group->name }}</td>
                             <td>
-                                <a href="{{ route('marks.showsubject', $group->id) }}">
+                                @foreach($group as $groups)
+                                    @if($groups->id == $fesc->groups_id)
+                                        {{ $groups->name }}
+                                        <?php $group_id = $groups->id ?>
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{ route('teachermarks.showstudent', ['groups' => $group_id, 'subjects' => $subject_id]) }}">
                                     <button class="btn btn-primary btn-sm">
-                                        Podglad ocen
+                                        Podglad studentów
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </a>

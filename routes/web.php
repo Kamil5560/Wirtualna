@@ -74,6 +74,11 @@ Route::middleware(['auth', 'can:isTeacher'])->group(function () {
     Route::get('/teacher/info', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'index'])->name('teacherinfo.index');
     Route::get('/teacher/info/{user}', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'edit'])->name('teacherinfo.edit');
     Route::post('/teacher/info/{user}', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'update'])->name('teacherinfo.update');
+    Route::get('/teacher/marks', [App\Http\Controllers\Teacher\TeachermarksController::class, 'index'])->name('teachermarks.index');
+    Route::get('/teacher/marks/{subjects}', [App\Http\Controllers\Teacher\TeachermarksController::class, 'showgroup'])->name('teachermarks.showgroup');
+    Route::get('/teacher/marks/{subjects}/{groups}', [App\Http\Controllers\Teacher\TeachermarksController::class, 'showstudent'])->name('teachermarks.showstudent');
+    Route::get('/teacher/marks/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Teacher\TeachermarksController::class, 'editmarks'])->name('teachermarks.edit');
+    Route::post('/teacher/marks/{groups}/{subjects}/{student}/{sm_id}', [App\Http\Controllers\Teacher\TeachermarksController::class, 'update'])->name('teachermarks.update');
 });
 
 //Route::get('/admin/group', [App\Http\Controllers\Admin\StudentgroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index
