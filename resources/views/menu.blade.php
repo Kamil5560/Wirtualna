@@ -51,16 +51,16 @@
                                 <a class="nav-link" href="{{ route('home') }}">Strona główna</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Grupy</a>
+                                <a class="nav-link" href="{{ route('teachergroup.index') }}#">Grupy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Wykładowcy</a>
+                                <a class="nav-link" href="{{ route('teacherteacher.index') }}">Wykładowcy</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Studenci</a>
+                                <a class="nav-link" href="{{ route('teacherstudent.index') }}">Studenci</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Informacje o wykładowcy</a>
+                                <a class="nav-link" href="{{ route('teacherinfo.index') }}">Informacje o wykładowcy</a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Oceny</a>

@@ -67,8 +67,13 @@ Route::middleware(['auth', 'can:isStudent'])->group(function () {
 
 //Teacher
 Route::middleware(['auth', 'can:isTeacher'])->group(function () {
-
-
+    Route::get('/teacher/group', [App\Http\Controllers\Teacher\TeachergroupController::class, 'index'])->name('teachergroup.index');
+    Route::get('/teacher/group/{group}', [App\Http\Controllers\Teacher\TeachergroupController::class, 'show'])->name('teachergroup.show');
+    Route::get('/teacher/teacher', [App\Http\Controllers\Teacher\TeacherteacherController::class, 'index'])->name('teacherteacher.index');
+    Route::get('/teacher/student', [App\Http\Controllers\Teacher\TeacherstudentController::class, 'index'])->name('teacherstudent.index');
+    Route::get('/teacher/info', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'index'])->name('teacherinfo.index');
+    Route::get('/teacher/info/{user}', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'edit'])->name('teacherinfo.edit');
+    Route::post('/teacher/info/{user}', [App\Http\Controllers\Teacher\TeacherinfoController::class, 'update'])->name('teacherinfo.update');
 });
 
 //Route::get('/admin/group', [App\Http\Controllers\Admin\StudentgroupController::class, 'index'])->name('AdminGroup')->middleware('auth'); //group.index
