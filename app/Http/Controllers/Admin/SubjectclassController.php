@@ -61,7 +61,7 @@ class SubjectclassController extends Controller
         $sc->groups_id = $request->input('groups_id');
         $sc->subject_id = $request->input('subject_id');
         $sc->save();
-        return redirect(route('subjectclass.index'))->with('status', __('wu.status.teacher.create'));
+        return redirect(route('subjectclass.index'))->with('status', __('wu.subjectclass.status.create'));
     }
 
     /**

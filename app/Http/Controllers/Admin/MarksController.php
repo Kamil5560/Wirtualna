@@ -99,10 +99,6 @@ class MarksController extends Controller
      */
     public function editmarks($groups, $subjects, $student, $sm_id): View
     {
-//        $studentquery = Student::where('id', $student)->get();
-//        $subjectquery = Subject::where('id', $subjects)->get();
-//        $groupquery = Group::where('id', $groups)->get();
-//        $studentname = Student::select('name')->where('id', $student)->first();
         $groupquery = Group::all();
         foreach ($groupquery as $fegroup){
             if($fegroup->id == $groups){
@@ -130,6 +126,8 @@ class MarksController extends Controller
                 break;
             }
         }
+
+        //TODO: Zrobic to w jedną funckję żeby się nie dublowało
         return view("admin.marks.editmarks", [
                 'id_sm' => $sm_id,
                 'id_group' => $groups,
@@ -158,7 +156,7 @@ class MarksController extends Controller
         if($id_sm == 0){
             $marks = $request->input('marks');
             if($marks == 0){
-                return redirect(route('marks.index'))->with('status', __('Pierwsze'));
+                return redirect(route('marks.index'))->with('status', __('wu.marks.status.null'));
             }
             else{
                 $Studentmarks = new StudentMarks();
@@ -171,14 +169,14 @@ class MarksController extends Controller
                 $Studentmarks->subject_id = $request->input('id_subject');
                 $Studentmarks->marks = $request->input('marks');
                 $Studentmarks->save();
-                return redirect(route('marks.index'))->with('status', __('Drugie'));
+                return redirect(route('marks.index'))->with('status', __('wu.marks.status.add'));
             }
         }else{
             $marks = $request->input('marks');
             if($marks == 'U'){
                 $Studentmarks = StudentMarks::find($id_sm);
                 $Studentmarks->delete();
-                return redirect(route('marks.index'))->with('status', __('Trzecie'));
+                return redirect(route('marks.index'))->with('status', __('wu.marks.status.delete'));
             }
             else{
                 $Studentmarks = StudentMarks::find($id_sm);
@@ -188,21 +186,8 @@ class MarksController extends Controller
                     'marks' => $request->input('marks'),
                 ]);
                 $Studentmarks->save();
-                return redirect(route('marks.index'))->with('status', __('Czwarte'));
+                return redirect(route('marks.index'))->with('status', __('wu.marks.status.update'));
             }
         }
-    }
-
-    //TODO: zmienić statusy
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

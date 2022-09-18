@@ -8,6 +8,7 @@ use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
@@ -59,7 +60,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->role = $request->input('role');
         $user->save();
-        return redirect(route('user.index'))->with('status', __('wu.status.user.create'));
+        return redirect(route('user.index'))->with('status', __('wu.user.status.create'));
     }
 
     /**
@@ -113,11 +114,11 @@ class UserController extends Controller
         $user->save();
 
         if($role == 'teacher'){
-            $status = redirect(route('teacher.index'))->with('status', __('wu.status.user.update'));
+            $status = redirect(route('teacher.index'))->with('status', __('wu.user.status.update'));
         }elseif($role == 'student'){
-            $status = redirect(route('home'))->with('status', __('wu.status.user.update'));
+            $status = redirect(route('home'))->with('status', __('wu.user.status.update'));
         }else{
-            $status = redirect(route('home'))->with('status', __('wu.status.user.update'));
+            $status = redirect(route('home'))->with('status', __('wu.user.status.update'));
         }
         return $status;
     }
@@ -132,6 +133,7 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+            Session::flash('status', __('wu.user.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

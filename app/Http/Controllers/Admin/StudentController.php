@@ -11,6 +11,7 @@ use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -55,8 +56,8 @@ class StudentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required',
-            'surname' => 'required',
+            'name' => 'required', 'string',
+            'surname' => 'required', 'string',
             'PESEL' => 'required', 'min:11', 'max:11', 'numeric',
             'groups_id' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -84,7 +85,7 @@ class StudentController extends Controller
         $student->users_id = $user_id;
         $student->groups_id = $request->input('groups_id');
         $student->save();
-        return redirect(route('student.index'))->with('status', __('wu.status.student.create'));
+        return redirect(route('student.index'))->with('status', __('wu.student.status.create'));
     }
 
     /**
@@ -132,7 +133,7 @@ class StudentController extends Controller
             'groups_id' => $request->input('groups_id'),
         ]);
         $student->save();
-        return redirect(route('student.index'))->with('status', __('wu.status.student.update'));
+        return redirect(route('student.index'))->with('status', __('wu.student.status.update'));
 
     }
 
@@ -146,6 +147,7 @@ class StudentController extends Controller
     {
         try {
             $student->delete();
+            Session::flash('status', __('wu.student.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

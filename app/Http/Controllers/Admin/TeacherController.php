@@ -12,6 +12,7 @@ use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -80,7 +81,7 @@ class TeacherController extends Controller
         $teacher->surname = $request->input('surname');
         $teacher->users_id = $user_id;
         $teacher->save();
-        return redirect(route('teacher.index'))->with('status', __('wu.status.teacher.create'));
+        return redirect(route('teacher.index'))->with('status', __('wu.teacher.status.create'));
     }
 
     /**
@@ -126,7 +127,7 @@ class TeacherController extends Controller
             'users_id' => $request->input('users_id'),
         ]);
         $teacher->save();
-        return redirect(route('teacher.index'))->with('status', __('wu.status.teacher.update'));
+        return redirect(route('teacher.index'))->with('status', __('wu.teacher.status.update'));
     }
 
     /**
@@ -148,6 +149,7 @@ class TeacherController extends Controller
 //                }
 //            }
             $teacher->delete();
+            Session::flash('status', __('wu.teacher.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

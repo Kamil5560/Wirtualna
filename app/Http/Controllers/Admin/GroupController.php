@@ -49,7 +49,7 @@ class GroupController extends Controller
     {
         $group = new Group($request->validated());
         $group->save();
-        return redirect(route('group.index'))->with('status', __('wu.status.groups.create'));
+        return redirect(route('group.index'))->with('status', __('wu.group.status.create'));
     }
 
     /**
@@ -89,7 +89,7 @@ class GroupController extends Controller
     {
         $group->fill($request->all());
         $group->save();
-        return redirect(route('group.index'))->with('status', __('wu.status.groups.update'));
+        return redirect(route('group.index'))->with('status', __('wu.group.status.update'));
     }
 
     /**
@@ -102,7 +102,7 @@ class GroupController extends Controller
     {
         try {
             $group->delete();
-            Session::flash('status', __('wu.status.groups.delete'));
+            Session::flash('status', __('wu.group.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

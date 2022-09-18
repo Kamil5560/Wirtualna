@@ -38,7 +38,6 @@ class TeachermarksController extends Controller
             'subject' => Subject::all(),
             'teacher_id' => $teacher_id,
         ]);
-        //TODO: Najpierw sprawdzić jakie przedmioty ma wykładowca i wypisać, potem grupy przypisane do przedmiotu a potem studenci w grupie
     }
 
     /**
@@ -143,7 +142,7 @@ class TeachermarksController extends Controller
         if($id_sm == 0){
             $marks = $request->input('marks');
             if($marks == 0){
-                return redirect(route('teachermarks.index'))->with('status', __('Pierwsze'));
+                return redirect(route('teachermarks.index'))->with('status', __('wu.marks.status.null'));
             }
             else{
                 $Studentmarks = new StudentMarks();
@@ -156,14 +155,14 @@ class TeachermarksController extends Controller
                 $Studentmarks->subject_id = $request->input('id_subject');
                 $Studentmarks->marks = $request->input('marks');
                 $Studentmarks->save();
-                return redirect(route('teachermarks.index'))->with('status', __('Drugie'));
+                return redirect(route('teachermarks.index'))->with('status', __('wu.marks.status.add'));
             }
         }else{
             $marks = $request->input('marks');
             if($marks == 'U'){
                 $Studentmarks = StudentMarks::find($id_sm);
                 $Studentmarks->delete();
-                return redirect(route('teachermarks.index'))->with('status', __('Trzecie'));
+                return redirect(route('teachermarks.index'))->with('status', __('wu.marks.status.delete'));
             }
             else{
                 $Studentmarks = StudentMarks::find($id_sm);
@@ -173,7 +172,7 @@ class TeachermarksController extends Controller
                     'marks' => $request->input('marks'),
                 ]);
                 $Studentmarks->save();
-                return redirect(route('teachermarks.index'))->with('status', __('Czwarte'));
+                return redirect(route('teachermarks.index'))->with('status', __('wu.marks.status.update'));
             }
         }
     }

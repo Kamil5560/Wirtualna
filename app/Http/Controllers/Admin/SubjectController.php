@@ -50,7 +50,7 @@ class SubjectController extends Controller
         $subject = new Subject();
         $subject->name = $request->input('name');
         $subject->save();
-        return redirect(route('subject.index'))->with('status', __('wu.status.subject.create'));
+        return redirect(route('subject.index'))->with('status', __('wu.subject.status.create'));
     }
 
     /**
@@ -90,7 +90,7 @@ class SubjectController extends Controller
     {
         $subject->fill($request->all());
         $subject->save();
-        return redirect(route('subject.index'))->with('status', __('wu.status.subject.update'));
+        return redirect(route('subject.index'))->with('status', __('wu.subject.status.update'));
     }
 
     /**
@@ -103,7 +103,7 @@ class SubjectController extends Controller
     {
         try {
             $subject->delete();
-            Session::flash('status', __('wu.status.groups.delete'));
+            Session::flash('status', __('wu.subject.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

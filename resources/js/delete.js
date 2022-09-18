@@ -10,6 +10,8 @@ $(function () {
 
         swalWithBootstrapButtons.fire({
             title: 'Czy na pewno chcesz usunąć rekord?',
+
+            //TODO: tytuł dać odwołanie tak jak do deleteUrl i w parametrze przekazywać odpowiedni tytuł
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'TAK',
