@@ -107,6 +107,7 @@ class GroupController extends Controller
                 'status' => 'success'
             ]);
         } catch (Exception $e) {
+            //TODO: Tutaj sprawdzenie czy jest powiązanie!
             return response()->json([
                 'status' => 'error',
                 'message' => 'Wystąpił błąd!'

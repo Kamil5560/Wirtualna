@@ -8,7 +8,6 @@ use Illuminate\Console\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
@@ -133,7 +132,6 @@ class UserController extends Controller
     {
         try {
             $user->delete();
-            Session::flash('status', __('wu.user.status.delete'));
             return response()->json([
                 'status' => 'success'
             ]);
