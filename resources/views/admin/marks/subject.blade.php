@@ -3,7 +3,7 @@
 @section('title')
     <div class="row">
         <div class="col-4">
-            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.group.add_form.title') }}</h3>
+            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.subject.add_form.title') }}</h3>
         </div>
     </div>
 @endsection

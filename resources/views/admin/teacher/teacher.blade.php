@@ -13,7 +13,7 @@
         </div>
         <div class="col-3">
             <a class="float-end" href=" {{ route('teacher.create') }}">
-                <button type="button" class="btn btn-primary">Dodaj wykładowce <i class="fa-solid fa-plus"></i></button>
+                <button type="button" class="btn btn-primary">Dodaj<i class="fa-solid fa-plus"></i></button>
             </a>
         </div>
     </div>

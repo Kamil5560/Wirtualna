@@ -61,7 +61,7 @@ class TeachersubjectController extends Controller
         $ts->teacher_id = $request->input('teacher_id');
         $ts->subject_id = $request->input('subjects_id');
         $ts->save();
-        return redirect(route('teachersubject.index'))->with('status', __('wu.status.teacher.create'));
+        return redirect(route('teachersubject.index'))->with('status', __('wu.teachersubject.status.create'));
 
     }
 

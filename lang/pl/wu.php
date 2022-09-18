@@ -68,16 +68,31 @@ return [
     ],
     'subjectclass' => [
         'add_form' => [
-            'title' => "Wybierz grupę",
-            'title_add' => "Dodawanie studenta",
-            'title_edit' => "Edycja studenta :name",
-            'title_show' => "Podgląd studenta :name",
+            'title' => "Przypisanie przedmiotu",
+            'title_add' => "Utwórz przypisanie przedmiotu do grupy",
+            'title_edit' => "Wybierz co usunąć",
+        ],
+        'status' => [
+            'create' => "Stworzono powiązanie",
+        ]
+    ],
+    'teachersubject' => [
+        'add_form' => [
+            'title' => "Przypisanie wykładowcy",
+            'title_add' => "Utwórz przypisanie",
+            'title_edit' => "Wybierz co usunąć",
         ],
         'status' => [
             'create' => "Stworzono powiązanie",
         ]
     ],
     'marks' => [
+        'add_form' => [
+            'title' => "Wybierz Ocenę",
+            'title_add' => "Dodawanie oceny",
+            'title_edit' => "Edytuj ocenę",
+            'title_show' => "Podgląd oceny",
+        ],
         'status' => [
             'null' => "Nie wybrano oceny",
             'add' => "Ocena została dodana",

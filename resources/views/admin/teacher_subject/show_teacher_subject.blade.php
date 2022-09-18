@@ -3,7 +3,7 @@
 @section('title')
     <div class="row">
         <div class="col-12">
-            <h3><i class="fa-solid fa-trash"></i> Wybierz co usunąć</h3>
+            <h3><i class="fa-solid fa-trash"></i> {{ __('wu.teachersubject.add_form.title_edit') }}</h3>
         </div>
     </div>
 @endsection

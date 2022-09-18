@@ -3,7 +3,7 @@
 @section('title')
     <div class="row">
         <div class="col-6">
-            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.subjectclass.add_form.title') }}</h3>
+            <h3><i class="fa-solid fa-users-rectangle"></i> {{ __('wu.teachersubject.add_form.title') }}</h3>
         </div>
         <div class="col-3">
             <a class="float-end" href="{{route('teachersubject.create')}}">

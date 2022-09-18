@@ -1,7 +1,7 @@
 @extends('menu')
 
 @section('title')
-    {{ __('wu.teacher.add_form.title_add') }}
+    {{ __('wu.teachersubject.add_form.title_add') }}
 @endsection
 
 @section('text')
